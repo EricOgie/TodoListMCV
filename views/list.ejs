@@ -1,0 +1,31 @@
+<%- include("headers") -%>
+  <div class="box" id="heading">
+    <h1><%=heading %></h1>
+  </div>
+
+  <div class="box" >
+      <%   list.forEach(element => { %>
+        <div class="item">
+         <div class="f1">
+          <input type="checkbox">
+         </div>
+           
+         <div class="f2">
+          <p><%=element.todo_item %></p>
+         </div>
+
+         <div class="f3">
+           <form method="POST" action="<%= deleteRoute %>">
+            <button class="delete" type="submit" name="listSubmit" value="<%=element.id %>">-</button> </form>
+            <input type="hidden" name="collection" value="<%= %>">
+         </div>
+      </div>
+        <% }); %>
+
+      <form class="item" action="<%=saveRoute %>" method="post">
+        <input type="text" name="toDoItem" placeholder="What do you want to do?">
+        <button type="submit" name="listSubmit" value="<%=heading %>">+</button> 
+      </form>
+  </div>
+
+  <%- include("footer") -%>
