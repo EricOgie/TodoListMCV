@@ -12,6 +12,6 @@ app.set('view engine', 'ejs'); // Set-up EJS view engine that will be used to re
 // --------------------------- Pages Routers ----------------------------//
 app.use(pagesRouter);
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log(`App Server Listening on Port ${process.env.PORT || 4000}`);
+app.listen(process.env.PORT || 9000, () => {
+  console.log(`App Server Listening on Port ${process.env.PORT || 9000}`);
 })

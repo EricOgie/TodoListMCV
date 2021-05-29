@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const mongooseRemote = require('../sensitive/mongooseurl');
 const EjsObjects = require("../ejsobjects.js");
 const ejsObjects = new EjsObjects();
 
 //--------------------- Make Mongoose connection.......................... //
-mongoose.connect('mongodb://localhost/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connection
-.once('open', ()=>{console.log("Connected Make SENZ! Success")})
-.on('error', (error)=>{
-    console.log("Connected cast oh!!!!!!!")
-});
+// mongoose.connect('mongodb://localhost/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const urlMongod = mongooseRemote.getMongooseUrl;
+mongoose.connect(urlMongod, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ----------------------------- Mongose Schema -------------------------------- //
 const schema = {todo_item: String};
@@ -37,7 +36,6 @@ const saveDefaultItems = (res)=>{
         }
     });
 
-   
   }
 
 const createTodoItemHome = (todoTask)=>{
